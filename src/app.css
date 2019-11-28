@@ -1,0 +1,26 @@
+#fakenews-app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+
+.cover {
+	background-image: url('./assets/cover.jpg');
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	position: relative;
+  	height: 300px;
+}
+
+.fake-news-search {
+	position: relative;
+	margin-top: 5px;
+	margin: auto;
+	width: 50%;
+}
+
+.fake-news-list {
+	position: relative;
+	max-width: 100%;
+	margin-top: 50px;
+	padding: 10px;
+}

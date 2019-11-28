@@ -1,0 +1,21 @@
+.news-item {
+	margin-bottom: 20px;
+
+	.news-name {
+		font-weight: bold;
+		font-size: 1.25rem;
+		margin-bottom: 5px;
+		display: inline-block;
+	}
+
+	.fake {
+		height: 1rem;
+		background-color: purple;
+		color: white;
+		display: inline-block;
+		float: right;
+		padding: 3px 7px;
+		font-weight: bold;
+		border-radius: 5px;
+	}
+}

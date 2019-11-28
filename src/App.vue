@@ -1,28 +1,46 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="fakenews-app">
+    <div class="cover"></div>
+    <div class="fake-news-search">
+      <search-component>
+      </search-component>
+    </div>
+    <div class="fake-news-list">
+      <news-component  :key="newsItem.name" v-for="newsItem in news"
+        :news="newsItem" :fake="newsItem.fake">
+      </news-component>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NewsComponent from './components/news/News.vue';
+import SearchComponent from './components/search/Search.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    NewsComponent,
+    SearchComponent
+  },
+  data() {
+    return {
+      news: [
+      {
+        name: "fake news 1",
+        content: "this is a fake news bla bla bla bla",
+        fake: true
+      },
+      {
+        name: "fake news 2",
+        content: "this is NOT a fake news",
+        fake: false
+      }]
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import './app.css';
 </style>

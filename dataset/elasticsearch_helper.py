@@ -18,12 +18,12 @@ def indexData():
 			 	id = idx,
 			 	body = news)
 
-def search(query):
+def searchNews(query):
 	result = es.search(
 		index = index,
 		body = {'query': {'match': {'statement': query}}})
-	
-	return [hit['_source'] for hit in res['hits']['hits']]
+
+	return [hit['_source'] for hit in result['hits']['hits']]
 
 def getIndex(idx):
 	result = es.get(
@@ -33,5 +33,5 @@ def getIndex(idx):
 	return result
 
 # indexData()
-# search('health')
+# searchNews('health')
 # getIndex(2)

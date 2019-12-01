@@ -2,7 +2,7 @@
   <div class="fakenews-app">
     <div class="cover"></div>
     <div class="fake-news-search">
-      <search-component>
+      <search-component @search="onSearch">
       </search-component>
     </div>
     <div class="fake-news-list">
@@ -26,16 +26,15 @@ export default {
   },
   data() {
     return {
-      news: ''
+      news: '',
+      searchValue: ''
     }
   },
   methods: {
     getNews() {
-      const path = 'http://localhost:5000/search?query=weather';
+      const path = `http://localhost:5000/search?query=${this.searchValue}`;
       axios.get(path)
         .then((res) => {
-			// eslint-disable-next-line
-        	console.log(res)
           this.news = res.data;
         })
         .catch((error) => {
@@ -43,9 +42,10 @@ export default {
           console.error(error);
         });
     },
-  },
-  created() {
-    this.getNews();
+    onSearch(value) {
+      this.searchValue = value;
+      this.getNews();
+    }
   }
 }
 </script>

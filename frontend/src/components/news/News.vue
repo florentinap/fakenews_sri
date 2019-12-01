@@ -4,22 +4,25 @@
 			<div class="news-name">
 				{{ news.name }}
 			</div>
-			<div class="fake" v-if="fake">
-				FAKE
+			<div class="news-subject">
+				{{ news.subject }}
+			</div>
+			<div class="fake">
+				{{ news.label }}
 			</div>
 		</div>
 		<div class="news-content">
-			{{ news.content }}
+			{{ news.statement }}
 		</div>
 	</div>
 </template>
 
-<script type="text/javascript">
+<script>
 	export default {
 		name: 'NewsItem',
 		props: {
 			news: {
-				type: String,
+				type: Object,
 				required: true
 			},
 			fake: {

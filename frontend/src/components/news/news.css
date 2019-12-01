@@ -8,14 +8,21 @@
 		display: inline-block;
 	}
 
+	.news-subject {
+		font-size: 0.75rem;
+		color: hsl(0, 0%, 75%);
+		display: inline-block;
+	}
+
 	.fake {
-		height: 1rem;
+		height: 0.75rem;
 		background-color: purple;
 		color: white;
 		display: inline-block;
 		float: right;
 		padding: 3px 7px;
 		font-weight: bold;
+		font-size: 0.75rem;
 		border-radius: 5px;
 	}
 }

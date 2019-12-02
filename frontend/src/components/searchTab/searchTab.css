@@ -1,0 +1,10 @@
+.fakenews-app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+
+.fake-news-list {
+	position: relative;
+	max-width: 100%;
+	margin-top: 50px;
+	padding: 10px;
+}

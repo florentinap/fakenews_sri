@@ -1,0 +1,51 @@
+.predict {
+	width: 100%;
+
+	.predict-text-area {
+		position: relative;
+		height: 5rem;
+		border: 3px solid #cccccc;
+		resize: none;
+		font-family: Tahoma, sans-serif;
+		overflow: auto;
+		margin: 0 auto;
+		width: 90%;
+		margin-bottom: 10px;
+		display: block;
+	}
+
+	.predict-button {
+		position: relative;
+		width: 90%;
+		color: white;
+		background-color: red;
+		margin: 0 auto;
+		border: none;
+		padding-top: 4px;
+		padding-bottom: 4px;
+		font-weight: 600;
+		font-size: 1rem;
+		display: block;
+			
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.predict-result {
+		text-transform: uppercase;
+		margin: 0 auto;
+		display: inline-block;
+		position: relative;
+		margin-top: 10px;
+		color: purple;
+		font-weight: 800;
+	}
+}
+
+.fake-news-list {
+	position: relative;
+	max-width: 100%;
+	margin-top: 50px;
+	padding: 10px;
+}

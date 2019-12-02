@@ -1,55 +1,37 @@
 <template>
-  <div class="fakenews-app">
-    <div class="cover"></div>
-    <div class="fake-news-search">
-      <search-component @search="onSearch">
-      </search-component>
-    </div>
-    <div class="fake-news-list">
-      <news-component  :key="newsItem.name" v-for="newsItem in news"
-        :news="newsItem" :fake="newsItem.fake">
-      </news-component>
-    </div>
-  </div>
+	<div>
+			<button
+				v-for="tab in tabs"      
+				:key="tab"
+				@click="selected = tab;"
+				:class="['tab-btn', { active: selected === tab }]" >
+				{{ tab }}
+			</button>
+
+		<div class="cover"></div>
+
+		<component :is="selected" class="tab"></component>
+	</div>
 </template>
 
 <script>
-import axios from 'axios';
-import NewsComponent from '../news/News.vue';
-import SearchComponent from '../search/Search.vue';
+import SearchTab from '../searchTab/SearchTab.vue';
+import PredictTab from '../predictTab/PredictTab.vue';
 
 export default {
-  name: 'Home',
-  components: {
-    NewsComponent,
-    SearchComponent
-  },
-  data() {
+  data: function() {
     return {
-      news: '',
-      searchValue: ''
-    }
+      tabs: ['SearchTab', 'PredictTab'],
+      selected: 'SearchTab'
+    };
   },
-  methods: {
-    getNews() {
-      const path = `http://localhost:5000/search?query=${this.searchValue}`;
-      axios.get(path)
-        .then((res) => {
-          this.news = res.data;
-        })
-        .catch((error) => {
-		// eslint-disable-next-line
-          console.error(error);
-        });
-    },
-    onSearch(value) {
-      this.searchValue = value;
-      this.getNews();
-    }
+  components: {
+    SearchTab,
+    PredictTab
   }
-}
+};
 </script>
 
 <style>
-  @import './home.css';
+	@import './home.css'
 </style>

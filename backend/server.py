@@ -19,5 +19,11 @@ def search():
 	result = searchNews(query)
 	return jsonify(result)
 
+@app.route('/predict', methods=['GET'])
+def prediction():
+	text = request.args.get('query')
+	result = 'barely-true' #predict(query)
+	return jsonify(result)
+
 if __name__ == '__main__':
 	app.run()

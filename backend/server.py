@@ -6,6 +6,8 @@ from flask_cors import CORS
 
 from elasticsearch_helper import searchNews
 
+import random
+
 DEBUG = True
 
 app = Flask(__name__)
@@ -22,7 +24,7 @@ def search():
 @app.route('/predict', methods=['GET'])
 def prediction():
 	text = request.args.get('query')
-	result = 'barely-true' #predict(query)
+	result = random.choice(['true', 'barely-true', 'false', 'half', 'mostly-true', 'pants-fire']) #predict(query)
 	return jsonify(result)
 
 if __name__ == '__main__':

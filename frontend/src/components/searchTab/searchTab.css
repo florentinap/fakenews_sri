@@ -8,3 +8,9 @@
 	margin-top: 50px;
 	padding: 10px;
 }
+
+.no-result {
+	margin-left: 45%;
+	font-weight: 600;
+	margin-top: 50px;
+}

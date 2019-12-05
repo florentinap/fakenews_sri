@@ -2,10 +2,13 @@
   <div class="fakenews-app">
       <search-component @search="onSearch">
       </search-component>
-    <div class="fake-news-list">
+    <div class="fake-news-list" v-if="news.length">
       <news-component  :key="newsItem.name" v-for="newsItem in news"
         :news="newsItem" :fake="newsItem.fake">
       </news-component>
+    </div>
+    <div class="no-result" v-else-if="searchValue !== ''">
+      No results
     </div>
   </div>
 </template>

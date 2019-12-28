@@ -32,6 +32,13 @@ def getIndex(idx):
 		id = idx)
 	return result
 
+def addNews(news, label):
+	es.index(
+		index = index,
+		doc_type = index,
+		body = {'statement': news, 'label': label})
+
 # indexData()
 # searchNews('health')
 # getIndex(2)
+# addNews('florentina boss', 'true')

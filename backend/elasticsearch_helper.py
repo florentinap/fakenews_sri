@@ -9,7 +9,7 @@ es = Elasticsearch([{
 	}])
 
 def indexData():
-	with open('fakenews.json') as json_file:
+	with open('./files/fakenews.json') as json_file:
 		data = json.load(json_file)
 		for idx, news in enumerate(data['news']):
 			 es.index(
@@ -37,8 +37,3 @@ def addNews(news, label):
 		index = index,
 		doc_type = index,
 		body = {'statement': news, 'label': label})
-
-# indexData()
-# searchNews('health')
-# getIndex(2)
-# addNews('florentina boss', 'true')

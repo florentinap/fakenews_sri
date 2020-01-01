@@ -1,0 +1,3 @@
+cd backend -> python server.py
+cd frontend -> npm run serve
+cd ~/Desktop/lasticsearch-7.2.0/ -> ./bin/elasticsearch

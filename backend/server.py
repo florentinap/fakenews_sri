@@ -1,12 +1,8 @@
-import sys
-sys.path.append('../dataset')
-
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 from elasticsearch_helper import searchNews, addNews
-
-import random
+from fakeNewsDetection import predict
 
 DEBUG = True
 
@@ -24,12 +20,13 @@ def search():
 
 @app.route('/predict', methods=['GET'])
 def prediction():
+	values = ['false', 'true']
 	text = request.args.get('query')
-	result = random.choice(['true', 'barely-true', 'false', 'half', 'mostly-true', 'pants-fire']) #predict(query)
+	result = predict(text)
 	
-	addNews(text, result)
+	# addNews(text, result)
 
-	return jsonify(result)
+	return jsonify(values[int(result)])
 
 if __name__ == '__main__':
 	app.run()

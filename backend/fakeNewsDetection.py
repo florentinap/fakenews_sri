@@ -13,16 +13,17 @@ nb = NaiveBayes.load("./ml/nbModel")
 model = NaiveBayesModel.load("./ml/naiveBayes")
 mySchema = StructType([StructField("text", StringType()),\
                        StructField("label", IntegerType())])
-# sc = spark.sparkContext
+	
+regexTokenizer = RegexTokenizer(inputCol="text", outputCol="words", pattern="\\W")
+stopwordsRemover = StopWordsRemover(inputCol="words", outputCol="filtered")
+countVectors = CountVectorizer(inputCol="filtered", outputCol="features", vocabSize=10000)
+
+sc = spark.sparkContext
+# pipelineFit = PipelineModel.load("./ml/pipeline")
 
 def predict(news_text):
-	sc = spark.sparkContext
 	news = sc.parallelize([(news_text, 1)])
 	dataTest = spark.createDataFrame(news, mySchema)
-
-	regexTokenizer = RegexTokenizer(inputCol="text", outputCol="words", pattern="\\W")
-	stopwordsRemover = StopWordsRemover(inputCol="words", outputCol="filtered")
-	countVectors = CountVectorizer(inputCol="filtered", outputCol="features", vocabSize=10000)
 
 	pipelineFit = PipelineModel.load("./ml/pipeline")
 	dataset = pipelineFit.transform(dataTest)

@@ -24,7 +24,7 @@ def prediction():
 	text = request.args.get('query')
 	result = predict(text)
 	
-	# addNews(text, result)
+	addNews(text, values[int(result)])
 
 	return jsonify(values[int(result)])
 
